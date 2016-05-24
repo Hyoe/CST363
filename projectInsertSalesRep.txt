@@ -1,0 +1,24 @@
+NEW SALES REP ENTRY
+
+
+Please enter Sales Reps First Name: John
+Please enter Sales Reps Last Name: Doe
+Please enter Sales Reps Middle Initial: M
+Please enter Sales Reps Email Address: johndoe@yahoo.com
+Please enter Sales Reps Phone Number (no dashes or symbols): 8085556985
+
+
+NEW SALES REP
+=============
+
+
+1 row created.
+
+Sales Rep ID: 6                         
+First Name: John                        
+Last Name: Doe                          
+Middle Initial: M                       
+EMAIL: johndoe@yahoo.com                
+PHONE #: (808) 555-6985                 
+                                        
+

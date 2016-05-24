@@ -1,0 +1,39 @@
+
+
+Please enter an Invoice Number (10000 - 10019): 10000
+
+
+INVOICE DETAILS
+===============
+
+Invoice Number: 10000                                                                               
+
+Store Number: 1                                                                                     
+Store Name: Barkeley Sports                                                                         
+                                                                                                    
+
+Sales Rep: CADWELL, Daniel                                                                          
+
+Ordered By: AZAREA, Frank                                                                           
+
+Ordered On: 01/01/2015                                                                              
+
+Shipped On: 01/03/2015                                                                              
+
+Product: 4                                                                                          
+Description: Herding Whip------------------                                                         
+Quantity: 15                                       Item Price: $34.99          524.85               
+                                                                                                    
+Product: 3                                                                                          
+Description: Adamantium Hockey Stick-------                                                         
+Quantity: 30                                       Item Price: $529.99        15899.7               
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                           ----------               
+                                                                                                    
+Total                                                                                               
+                                                                                                    
+                                                                             16424.55               
+                                                                                                    
+

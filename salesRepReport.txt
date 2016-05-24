@@ -1,0 +1,119 @@
+SQL> 
+SQL> -- Team 6 - Hyo Lee, Jennifer Dunham, Daniel Cadwell, Francisco Gutierrez
+SQL> -- TEAM KICK ASCII
+SQL> -- Sales Rep Report
+SQL> 
+SQL> --Create a subtotal and total report for each Sales Rep.
+SQL> 
+SQL> SET ECHO ON
+SQL> SET VERIFY ON
+SQL> SET HEADING ON
+SQL> SET PAGESIZE 5000
+SQL> SET LINESIZE 140
+SQL> 
+SQL> PROMPT
+
+SQL> TTITLE ON
+SQL> TTITLE CENTER "SALES REPRESENTATIVE REPORT" SKIP 1 -
+> CENTER ============================== SKIP 2
+SQL> SET PAGESIZE 1000
+SQL> SET LINESIZE 110
+SQL> COLUMN sls_rep_lname FORMAT A20;
+SQL> COLUMN sls_rep_fname FORMAT A20;
+SQL> BREAK ON	 sls_rep_id SKIP 1 ON sls_rep_fname SKIP 1 ON sls_rep_lname SKIP 1 ON REPORT;
+SQL> COMPUTE	 SUM LABEL Subtotal OF "TOTAL INVOICE" ON sls_rep_id;
+SQL> COMPUTE	 SUM LABEL Total OF "Total Invoice" ON REPORT;
+SQL> SELECT	 sales_rep.sls_rep_id, sls_rep_fname, sls_rep_lname, invoice.store_num, invoice.inv_num,
+  2  		 line.prod_num, line_qty, SUM(line_price*line_qty) AS "TOTAL INVOICE"
+  3  FROM	 sales_rep
+  4  JOIN	 invoice ON sales_rep.sls_rep_id = invoice.sls_rep_id
+  5  JOIN	 line ON invoice.inv_num = line.inv_num
+  6  GROUP BY	 sls_rep_fname, sls_rep_lname, invoice.store_num, invoice.inv_num, line.prod_num, line_qty, sales_rep.sls_rep_id
+  7  ORDER BY	 sls_rep_lname;
+
+                                          SALES REPRESENTATIVE REPORT                                         
+                                        ==============================                                        
+                                                                                                              
+SLS_REP_ID SLS_REP_FNAME        SLS_REP_LNAME         STORE_NUM    INV_NUM   PROD_NUM   LINE_QTY TOTAL INVOICE
+---------- -------------------- -------------------- ---------- ---------- ---------- ---------- -------------
+         4 Daniel               Cadwell                       1      10000          3         30       15899.7
+                                                              1      10000          4         15        524.85
+                                                              1      10012         12         76       1063.24
+                                                              8      10003          3          8       4239.92
+                                                              8      10003          5          7       1756.93
+                                                              8      10003         10         25       4249.75
+                                                                                                              
+                                                                                                              
+********** ******************** ********************                                             -------------
+Subtotal                                                                                              27734.39
+                                                                                                              
+                                                                                                              
+                                                                                                              
+         2 Jennifer             Dunham                        4      10001          2         10         979.9
+                                                              5      10006          1         79       2764.21
+                                                              5      10006          2         60        5879.4
+                                                              5      10006          3        125      66248.75
+                                                              5      10006          7         42        503.58
+                                                              6      10013          2        350       34296.5
+                                                              6      10013          3         50       26499.5
+                                                              6      10013          6        225      14622.75
+                                                              8      10019          1        700         24493
+                                                              8      10019          7        500          5995
+                                                              8      10019          9        200         17998
+                                                              8      10019         15        600         13794
+                                                                                                              
+                                                                                                              
+********** ******************** ********************                                             -------------
+Subtotal                                                                                             214074.59
+                                                                                                              
+                                                                                                              
+                                                                                                              
+         3 Francisco            Gutierrez                     3      10009         11         75      21374.25
+                                                                                                              
+                                                                                                              
+********** ******************** ********************                                             -------------
+Subtotal                                                                                              21374.25
+                                                                                                              
+                                                                                                              
+                                                                                                              
+         1 Hyo                  Lee                           1      10005         11         35       9974.65
+                                                              8      10008          3         60       31799.4
+                                                              9      10017          3         65      34449.35
+                                                             10      10018          8        100           999
+                                                                                                              
+                                                                                                              
+********** ******************** ********************                                             -------------
+Subtotal                                                                                               77222.4
+                                                                                                              
+                                                                                                              
+                                                                                                              
+         5 Wendy                Wang                          2      10016          3         30       15899.7
+                                                              2      10016         12         15        209.85
+                                                              2      10016         13         75       9374.25
+                                                              6      10014         10         95      16149.05
+                                                              8      10007          7         20         239.8
+                                                              9      10010          2         90        8819.1
+                                                              9      10015         15         70        1609.3
+                                                             10      10002          6         30        1949.7
+                                                             10      10004          6         80        5199.2
+                                                             10      10004         14        100          4299
+                                                             10      10011          1        150        5248.5
+                                                             10      10011          8        200          1998
+                                                                                                              
+                                                                                                              
+********** ******************** ********************                                             -------------
+Subtotal                                                                                              70995.45
+                                                                                                              
+                                                                                                              
+                                                                                                              
+                                                                                                 -------------
+Total                                                                                                411401.08
+                                                                                                              
+                                                                                                              
+
+35 rows selected.
+
+SQL> TTITLE OFF
+SQL> CLEAR COMPUTE
+SQL> 
+SQL> SPOOL OFF
