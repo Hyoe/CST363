@@ -1,1 +1,2 @@
-# CST363
+# Sporting Goods Store Database.
+Oracle Database, SQL, PL/SQL.
